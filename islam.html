@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="img.ico" />
+    <title>Islamic Knowledge Hub - Quran, Hadith & Duas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+         .logo {
+      font-weight: 700;
+      font-size: 22px;
+      text-decoration: none;
+      color: #333;
+      margin-left: 8px; 
+         }  
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e2e8f0;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 30%);
+            z-index: -1;
+            transition: background 0.3s;
+        }
+        body.dark-mode::before {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 30%);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            position: relative;
+        }
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .control-btn {
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(15, 23, 42, 0.1);
+            color: #334155;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        body.dark-mode .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+        .control-btn:hover {
+            background: rgba(129, 140, 248, 0.2);
+            transform: translateY(-2px);
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-weight: 800;
+        }
+        body.dark-mode h1 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        body.dark-mode .subtitle {
+            color: #cbd5e1;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .search-bar {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 18px 25px;
+            padding-left: 60px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(241, 245, 249, 0.8);
+            color: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(74, 85, 104, 0.2);
+        }
+        body.dark-mode .search-input {
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            border-color: rgba(129, 140, 248, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .search-input:focus {
+            outline: none;
+            box-shadow: 
+                0 0 0 2px rgba(74, 85, 104, 0.5),
+                0 0 30px rgba(74, 85, 104, 0.3),
+                0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: rgba(74, 85, 104, 0.7);
+        }
+        body.dark-mode .search-input:focus {
+            box-shadow: 
+                0 0 0 2px rgba(129, 140, 248, 0.5),
+                0 0 30px rgba(129, 140, 248, 0.4),
+                0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(129, 140, 248, 0.7);
+        }
+        .search-input::placeholder {
+            color: #94a3b8;
+        }
+        .search-icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1.3rem;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 28px;
+            background: rgba(241, 245, 249, 0.7);
+            border: 1px solid rgba(74, 85, 104, 0.2);
+            color: #334155;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        body.dark-mode .tab-btn {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(129, 140, 248, 0.3);
+            color: #cbd5e1;
+        }
+        .tab-btn.active {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 85, 104, 0.3);
+        }
+        body.dark-mode .tab-btn.active {
+            background: linear-gradient(45deg, #818cf8, #c084fc);
+            box-shadow: 0 5px 15px rgba(129, 140, 248, 0.4);
+        }
+        .tab-btn:hover:not(.active) {
+            background: rgba(241, 245, 249, 0.9);
+            border-color: rgba(74, 85, 104, 0.4);
+        }
+        body.dark-mode .tab-btn:hover:not(.active) {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(129, 140, 248, 0.5);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .source-card {
+            background: rgba(241, 245, 249, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 85, 104, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        body.dark-mode .source-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(129, 140, 248, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .source-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.2),
+                0 0 25px rgba(74, 85, 104, 0.2);
+            border-color: rgba(74, 85, 104, 0.4);
+        }
+        body.dark-mode .source-card:hover {
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 25px rgba(129, 140, 248, 0.2);
+            border-color: rgba(129, 140, 248, 0.4);
+        }
+        .source-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        body.dark-mode .source-card h3 {
+            color: #e2e8f0;
+        }
+        .source-card h3 i {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .source-card h3 i {
+            background: linear-gradient(45deg, #818cf8, #c084fc);
+        }
+        .source-card p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        body.dark-mode .source-card p {
+            color: #94a3b8;
+        }
+        .source-link {
+            display: inline-block;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: color 0.2s ease;
+        }
+        body.dark-mode .source-link {
+            color: #818cf8;
+        }
+        .source-link:hover {
+            color: #7c3aed;
+            text-decoration: underline;
+        }
+        body.dark-mode .source-link:hover {
+            color: #c084fc;
+        }
+        .quran-verse {
+            background: rgba(241, 245, 249, 0.6);
+            border-left: 4px solid #4f46e5;
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+        }
+        body.dark-mode .quran-verse {
+            background: rgba(15, 23, 42, 0.6);
+            border-left-color: #818cf8;
+        }
+        .quran-verse .arabic {
+            font-size: 1.8rem;
+            direction: rtl;
+            text-align: right;
+            margin-bottom: 15px;
+            font-family: 'Arial Unicode MS', 'Scheherazade New', serif;
+        }
+        .quran-verse .translation {
+            font-style: italic;
+            color: #1e293b;
+        }
+        body.dark-mode .quran-verse .translation {
+            color: #cbd5e1;
+        }
+        .quran-verse .reference {
+            color: #4f46e5;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+        }
+        body.dark-mode .quran-verse .reference {
+            color: #818cf8;
+        }
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .pillar-card {
+            background: rgba(241, 245, 249, 0.6);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(74, 85, 104, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        body.dark-mode .pillar-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-color: rgba(129, 140, 248, 0.3);
+        }
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(74, 85, 104, 0.15);
+            border-color: rgba(74, 85, 104, 0.4);
+        }
+        body.dark-mode .pillar-card:hover {
+            box-shadow: 0 10px 20px rgba(129, 140, 248, 0.2);
+            border-color: rgba(129, 140, 248, 0.5);
+        }
+        .pillar-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .pillar-icon {
+            background: linear-gradient(45deg, #818cf8, #c084fc);
+        }
+        .pillar-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+        body.dark-mode .pillar-title {
+            color: #e2e8f0;
+        }
+        .pillar-desc {
+            color: #475569;
+            line-height: 1.6;
+        }
+        body.dark-mode .pillar-desc {
+            color: #94a3b8;
+        }
+        .concept-section {
+            background: rgba(241, 245, 249, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(74, 85, 104, 0.2);
+        }
+        body.dark-mode .concept-section {
+            background: rgba(30, 41, 59, 0.5);
+            border-color: rgba(129, 140, 248, 0.2);
+        }
+        .concept-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        body.dark-mode .concept-section h2 {
+            color: #e2e8f0;
+        }
+        .concept-section h2 i {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .concept-section h2 i {
+            background: linear-gradient(45deg, #818cf8, #c084fc);
+        }
+        .concept-content {
+            color: #1e293b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        body.dark-mode .concept-content {
+            color: #cbd5e1;
+        }
+        .concept-content p {
+            margin-bottom: 15px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #475569;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(74, 85, 104, 0.2);
+        }
+        body.dark-mode footer {
+            color: #94a3b8;
+            border-top-color: rgba(129, 140, 248, 0.2);
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .search-input {
+                padding: 15px 20px;
+                padding-left: 50px;
+            }
+            .search-icon {
+                left: 20px;
+                font-size: 1.1rem;
+            }
+            .tabs {
+                gap: 5px;
+            }
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .pillars-container {
+                grid-template-columns: 1fr;
+            }
+            .controls {
+                position: static;
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
+        
+        /* Custom styles for the logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+        
+        body.dark-mode .logo-image {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .logo-text {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="controls">
+                <button id="theme-toggle" class="control-btn">
+                    <i class="fas fa-moon"></i>
+                    <span data-en="Dark Mode" data-kin="Mode yu mukara">Dark Mode</span>
+                </button>
+                <button id="language-toggle" class="control-btn">
+                    <i class="fas fa-language"></i>
+                    <span data-en="Kinyarwanda" data-kin="English">Kinyarwanda</span>
+                </button>
+            </div>
+            <div class="logo-container">
+                <img src="img.ico" alt="Islamic Knowledge Hub Logo" class="logo-image">
+                <h1 class="logo-text">Islamic Knowledge Hub</h1>
+            </div>
+            <p class="subtitle" id="main-subtitle">Authentic Quranic verses, Hadith collections, and Duas from trusted Islamic sources</p>
+        </header>
+        <div class="search-container">
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="search-input" placeholder="Search Quran, Hadith, or Duas...">
+            </div>
+        </div>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="quran" data-en="Quran" data-kin="Qurani">Quran</button>
+            <button class="tab-btn" data-tab="hadith" data-en="Hadith" data-kin="Amahadithi">Hadith</button>
+            <button class="tab-btn" data-tab="duas" data-en="Duas" data-kin="amaduwa">Duas</button>
+            <button class="tab-btn" data-tab="pillars" data-en="Pillars" data-kin="Inkingi">Pillars</button>
+            <button class="tab-btn" data-tab="concepts" data-en="Key Concepts" data-kin="Amwe mu mategeko y'idini">Some laws of Islam</button>
+        </div>
+        <!-- Quran Section -->
+        <div id="quran" class="content-section active">
+            <div class="quran-verse">
+                <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                <div class="translation" id="quran-trans-1">In the name of Allah, the Entirely Merciful, the Especially Merciful.</div>
+                <span class="reference">Surah Al-Fatihah (1:1)</span>
+            </div>
+            <div class="quran-verse">
+                <div class="arabic">إِنَّ اللَّهَ لَا يَظْلِمُ مِثْقَالَ ذَرَّةٍ ۖ وَإِن تَكُ حَسَنَةً يُضَاعِفْهَا وَيُؤْتِ مِن لَّدُنْهُ أَجْرًا عَظِيمًا</div>
+                <div class="translation" id="quran-trans-2">Indeed, Allah does not do injustice, [even] as much as an atom's weight; while if there is a good deed, He multiplies it and gives from Himself a great reward.</div>
+                <span class="reference">Surah An-Nisa (4:40)</span>
+            </div>
+            <div class="source-grid">
+                <div class="source-card">
+                    <h3><i class="fas fa-book-quran"></i> <span data-en="Quran.com" data-kin="Quran.com">Quran.com</span></h3>
+                    <p data-en="Complete Quran with translations, tafsir, and recitations from multiple scholars." data-kin="Qurani yose hamwe n'igisobanuro, tafsiri, n'ibisomo bya  basomyi benshi.">Complete Quran with translations, tafsir, and recitations from multiple scholars.</p>
+                    <a href="https://quran.com" target="_blank" class="source-link">Visit Quran.com →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-mosque"></i> <span data-en="Al-Quran.info" data-kin="Al-Quran.info">Al-Quran.info</span></h3>
+                    <p data-en="Searchable Quran with word-by-word analysis, grammar, and linguistic resources." data-kin="Qur'an ufite ikibazo hamwe n'ubusobanuro bw'ijambo rimwe kuri  rimwe, imiterere, n'ibikoresho by'ururimi.">Searchable Quran with word-by-word analysis, grammar, and linguistic resources.</p>
+                    <a href="https://al-quran.info" target="_blank" class="source-link">Visit Al-Quran.info →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-headphones"></i> <span data-en="Quran Central" data-kin="Quran Central">Quran Central</span></h3>
+                    <p data-en="Listen to Quran recitations from famous Qaris with synchronized text." data-kin="Umva ibisomo bya  hafiz bagiye batandukanye muri nyandiko y'i cyarabu.">Listen to Quran recitations from famous Qaris with synchronized text.</p>
+                    <a href="https://qurancentral.com" target="_blank" class="source-link">Visit Quran Central →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Hadith Section -->
+        <div id="hadith" class="content-section">
+            <div class="quran-verse">
+                <div class="arabic">الْمُؤْمِنُ الَّذِي يُخَالِطُ النَّاسَ وَيَصْبِرُ عَلَى أَذَاهُمْ خَيْرٌ مِنَ الَّذِي لاَ يُخَالِطُهُمْ وَلاَ يَصْبِرُ عَلَى أَذَاهُمْ</div>
+                <div class="translation" id="hadith-trans-1">"The believer who mixes with people and endures their harm is better than the one who does not mix with them nor endure their harm."</div>
+                <span class="reference">Sunan Ibn Majah 4032 (Sahih)</span>
+            </div>
+            <div class="source-grid">
+                <div class="source-card">
+                    <h3><i class="fas fa-book"></i> <span data-en="Sunnah.com" data-kin="Sunnah.com">Sunnah.com</span></h3>
+                    <p data-en="Complete Hadith collections from Bukhari, Muslim, Abu Dawud and other authentic sources." data-kin="Amahadithi yose kuri  Bukhari, Muslim, Abu Dawud n'abandi bamenyi benshi bakiriye ama hadith .">Complete Hadith collections from Bukhari, Muslim, Abu Dawud and other authentic sources.</p>
+                    <a href="https://sunnah.com" target="_blank" class="source-link">Visit Sunnah.com →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-search"></i> <span data-en="Hadith Encyclopedia" data-kin="Encyclopédie y'Amahadithi">Hadith Encyclopedia</span></h3>
+                    <p data-en="Searchable database of Hadith with grading and scholarly references." data-kin="Igikorwa cy'ibikoresho by'Amahadithi hamwe n'ibisobanuro by'abasomyi.">Searchable database of Hadith with grading and scholarly references.</p>
+                    <a href="https://hadith.inoor.ir" target="_blank" class="source-link">Visit Hadith Encyclopedia →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-graduation-cap"></i> <span data-en="Al-Maktaba Al-Shamela" data-kin="Al-Maktaba Al-Shamela">Al-Maktaba Al-Shamela</span></h3>
+                    <p data-en="Comprehensive digital library of Islamic texts including Hadith collections." data-kin="isomero rigezweho ririmo ama hadith yose akusa nyirijwe hamwe.">Comprehensive digital library of Islamic texts including Hadith collections.</p>
+                    <a href="https://shamela.ws" target="_blank" class="source-link">Visit Al-Maktaba →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Duas Section -->
+        <div id="duas" class="content-section">
+            <div class="quran-verse">
+                <div class="arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                <div class="translation" id="duas-trans-1">"Our Lord, give us in this world [that which is] good and in the Hereafter [that which is] good and protect us from the punishment of the Fire."</div>
+                <span class="reference">Surah Al-Baqarah (2:201)</span>
+            </div>
+            <div class="source-grid">
+                <div class="source-card">
+                    <h3><i class="fas fa-hands-praying"></i> <span data-en="Hisn Invocations" data-kin="Hisn Invocations">Hisn Invocations</span></h3>
+                    <p data-en="Authentic Duas from Quran and Sunnah with Arabic text, transliteration, and meanings." data-kin="hadith zemewe ziri mu cyarabu  zifite aba zakiriye ni bisobanuro byayo mu Kinyarwanda">Authentic Duas from Quran and Sunnah with Arabic text, transliteration, and meanings.</p>
+                    <a href="https://hisnulmuslim.com" target="_blank" class="source-link">Visit Hisn Invocations →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-book-open"></i> <span data-en="Daily Duas App" data-kin="application y'amaduwa">Daily Duas App</span></h3>
+                    <p data-en="Collection of daily supplications for all occasions with audio pronunciation." data-kin="Ikusanyirizwa rya ma hadith menshi ndetse na audio zayo">Collection of daily supplications for all occasions with audio pronunciation.</p>
+                    <a href="https://dailyduas.com" target="_blank" class="source-link">Visit Daily Duas →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-moon"></i> <span data-en="Ramadhan Duas" data-kin="amaduwa y'igisibo">Ramadhan Duas</span></h3>
+                    <p data-en="Special collection of Duas for Ramadan, Laylatul Qadr, and other blessed times." data-kin="Amaduwa yi myihariko nko muri ramadhan , ijoro ry'igabe ni bindi bihe by'ingenzi ">Special collection of Duas for Ramadan, Laylatul Qadr, and other blessed times.</p>
+                    <a href="https://ramadhanguide.com/duas" target="_blank" class="source-link">Visit Ramadhan Duas →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Pillars of Islam Section -->
+        <div id="pillars" class="content-section">
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 2.2rem;">
+                <i class="fas fa-archway"></i> <span data-en="The Five Pillars of Islam" data-kin="Inkingi eshanu z'ubusilamu">The Five Pillars of Islam</span>
+            </h2>
+            <div class="pillars-container">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <h3 class="pillar-title" data-en="Shahada (Faith)" data-kin="Shahada (Ukuri)">Shahada (Faith)</h3>
+                    <p class="pillar-desc" data-en="Declaration of faith: 'There is no god but Allah, and Muhammad is His Messenger.'" data-kin=" Guhamya ko nta yindi Mana ibaho ikwiye gusengwa  itari Allah ndetse ko  Muhammad ari intumwa yayo    ">Declaration of faith: "There is no any other God for worshipping besides Allah and that Muhammad is his messenger"</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3 class="pillar-title" data-en="Salah (Prayer)" data-kin="Salah (Iswala)">Salah (Prayer)</h3>
+                    <p class="pillar-desc" data-en="Performing the five daily prayers facing the Kaaba in Mecca." data-kin="Gusenga gatanu ku munsi kandi ku gihe">Performing the five daily prayers on their time</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="pillar-title" data-en="Zakat (Charity)" data-kin="Zakat (Ituro)">Zakat </h3>
+                    <p class="pillar-desc" data-en="Giving 2.5% of one's savings annually to those in need." data-kin="Gutanga amaturo kuri ba bandi bayakeneye ">Giving zakat to those in need.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="pillar-title" data-en="Sawm (Fasting)" data-kin="Sawm (Igisibo)">Sawm </h3>
+                    <p class="pillar-desc" data-en="Fasting from dawn to sunset during the month of Ramadan." data-kin="Gusiba igisibo cy'ukwezi kwa ramadhan .">fasting the  month of ramadhan.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-kaaba"></i>
+                    </div>
+                    <h3 class="pillar-title" data-en="Hajj (Pilgrimage)" data-kin="Hajj(Umutambagiro)">Hajj </h3>
+                    <p class="pillar-desc" data-en="Pilgrimage to Mecca at least once in a lifetime if physically and financially able." data-kin="gukora umutambagiro mutagatifu i Makka kubifitiye ubushobozi.">Pilgrimage to Mecca at least once in a lifetime if physically and financially able.</p>
+                </div>
+            </div>
+            <div class="concept-section">
+                <h2><i class="fas fa-book"></i> <span data-en="Quranic Foundation" data-kin="Ibikoresho ku Qurani">Quranic Foundation</span></h2>
+                <div class="concept-content">
+                    <p data-en='"And I did not create the jinn and mankind except to worship Me." (Quran 51:56)' data-kin='Ntabwo naremye abajinni n’abantu keretse ngo bansenge.(Qurani 51:56)>"And I did not create the jinn and mankind except to worship Me." '(Quran 51:56)'</p>
+                    <p data-en='"Righteousness is not that you turn your faces toward the east or the west, but [true] righteousness is [in] one who believes in Allah..." (Quran 2:177)' data-kin='"Ubutungane si ukwerekeza mu maso yanyu iburasirazuba cyangwa iburengerazuba, ahubwo intungane ni abemera Allah, Umunsi w’Imperuka, abamalayika, Ibitabo, n’Abahanuzi; bagatanga impano n’amaturo mu byo bakunda cyane ku muryango, imfubyi, abakene, abagenzi bakeneye ubufasha, abasaba, no mu gucungura imbohe; bashyiraho isengesho, bakishyura zakatu, kandi bakarangiza amasezerano yabo; kandi bakihangana mu bihe by’amage, ibyago, no mu gihe cy’intambara. Abo ni bo b’ukuri mu kwizera, kandi ni bo bitinya Allah." (Qurani 2:177)'>"Righteousness is not that you turn your faces toward the east or the west, but [true] righteousness is [in] one who believes in Allah..." (Quran 2:177)</p>
+                </div>
+            </div>
+        </div>
+        <!-- Key Concepts Section -->
+        <div id="concepts" class="content-section">
+            <div class="concept-section">
+                <h2><i class="fas fa-lightbulb"></i> <span data-en="Tawhid (Oneness of Allah)" data-kin="Tawhid (Ukomoko wa Allah)">Tawhid (Oneness of Allah)</span></h2>
+                <div class="concept-content">
+                    <p><strong data-en="Tawhid" data-kin="Tawhid">Tawhid</strong> <span data-en="is the fundamental concept of Islam that affirms the absolute oneness and uniqueness of Allah (God)." data-kin="“Ni ihame ry’ingenzi mu idini ya Islamu ryemeza ko Allah ari umwe rukumbi kandi wihariye.”">is the fundamental concept of Islam that affirms the absolute oneness and uniqueness of Allah.</span></p>
+                    <p><strong data-en="1. Tawhid al-Rububiyyah:" data-kin="1. Tawhid al-Rububiyyah:">1. Tawhid al-Rububiyyah:</strong> <span data-en="Oneness of Lordship - Recognizing Allah as the sole Creator, Sustainer, and Controller of the universe." data-kin="“ Kwemera ko Allah ari We wenyine Muremyi, Umugenga, n’Utunze kandi Ugenga byose byo mu isi n’ijuru.”"> Recognizing Allah as the sole Creator, Sustainer, and Controller of the universe.</span></p>
+                    <p><strong data-en="2. Tawhid al-Uluhiyyah:" data-kin="2. Tawhid al-Uluhiyyah:">2. Tawhid al-Uluhiyyah:</strong> <span data-en="Oneness of Worship - Directing all acts of worship exclusively to Allah." data-kin="Kuyobora ibikorwa byose  bw'ibijyanye na masengesho  kuri Allah wenyine.”"> Directing all acts of worship exclusively to Allah.</span></p>
+                    <p><strong data-en="3. Tawhid al-Asma' wa al-Sifat:" data-kin="3. Tawhid al-Asma' wa al-Sifat:">3. Tawhid al-Asma' wa al-Sifat:</strong> <span data-en=" Affirming the names and attributes of Allah as mentioned in the Quran and authentic Sunnah without distortion or comparison." data-kin="“Kwemera amazina n'ibirango bya Allah bivugwa muri Qur'an no muri Sunnah yizewe, nta kuyahindura cyangwa kuyagereranya.”">Oneness of Names and Attributes - Affirming the names and attributes of Allah as mentioned in the Quran and authentic Sunnah without distortion or comparison.</span></p>
+                    <p data-en='He is Allah, [who is] One. Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent. (Quran 112:1-4)' data-kin='"“Vuga uti: ‘Ni We Allah — Umwe rukumbi; Allah — Utunze byose kandi byose bimukeneye. Ntiyigeze abyara, kandi ntiyigeze avuka. Kandi nta n’umwe umeze nka We.’ (Qurani 112:1-4)'>"Say, 'He is Allah, [who is] One. Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent.'" (Quran 112:1-4)</p>
+                </div>
+            </div>
+            <div class="concept-section">
+                <h2><i class="fas fa-graduation-cap"></i> <span data-en="Fiqh (Islamic Jurisprudence)" data-kin="Fiqh (Uburembo bw'Islamu)">Fiqh (Islamic Jurisprudence)</span></h2>
+                <div class="concept-content">
+                    <p><strong data-en="Fiqh" data-kin="Fiqh">Fiqh</strong> <span data-en="is the human understanding and interpretation of Islamic law (Sharia) based on the Quran and Sunnah." data-kin="ni uburembo bw'umuntu ku buryo butumwa bw'Islamu (Sharia) bituma Qurani n'ubutumwa bw'umukama.">is the human understanding and interpretation of Islamic law (Sharia) based on the Quran and Sunnah.</span></p>
+                    <p><span data-en="The four major Sunni schools of Fiqh are:" data-kin="Amashuri ya Fiqh y'Abasunni ni:">The four major Sunni schools of Fiqh are:</span></p>
+                    <p>• <strong data-en="Hanafi:" data-kin="Hanafi:">Hanafi:</strong> <span data-en="Founded by Imam Abu Hanifa, prevalent in South Asia, Turkey, and the Balkans" data-kin="Yateguwe n'Imamu Abu Hanifa, ifite inkomoko muri Asia y'Epfo, Turukiya, n'ibibumba bya Balkan">Founded by Imam Abu Hanifa, prevalent in South Asia, Turkey, and the Balkans</span></p>
+                    <p>• <strong data-en="Maliki:" data-kin="Maliki:">Maliki:</strong> <span data-en="Founded by Imam Malik, dominant in North and West Africa" data-kin="Yateguwe n'Imamu Malik, ifite ubwoko mu Afrika y'Amajyaruguru n'ya Magara">Founded by Imam Malik, dominant in North and West Africa</span></p>
+                    <p>• <strong data-en="Shafi'i:" data-kin="Shafi'i:">Shafi'i:</strong> <span data-en="Founded by Imam Shafi'i, common in East Africa, Southeast Asia, and parts of the Middle East" data-kin="Yateguwe n'Imamu Shafi'i, ifite ubwoko mu Afrika y'Amajyaruguru, Asia y'Epfo, n'ibindi bice mu Majyaruguru">Founded by Imam Shafi'i, common in East Africa, Southeast Asia, and parts of the Middle East</span></p>
+                    <p>• <strong data-en="Hanbali:" data-kin="Hanbali:">Hanbali:</strong> <span data-en="Founded by Imam Ahmad ibn Hanbal, followed in Saudi Arabia and Gulf states" data-kin="Yateguwe n'Imamu Ahmad ibn Hanbal, ifite ubwoko mu Arabiya Sawudite n'ibindi bihano mu Majyaruguru">Founded by Imam Ahmad ibn Hanbal, followed in Saudi Arabia and Gulf states</span></p>
+                    <p data-en='"And We have revealed to you the Book in truth, confirming what came before it of the Scripture and as a criterion over it..." (Quran 5:48)' data-kin='"Twebwe turiheze ibitabo muri ubwoba, twemeza ibyo byagaraga mbere yabyo mu Butumwa n'ubwoba kuri byo kuri byo..."' (Qurani 5:48)'>"And We have revealed to you the Book in truth, confirming what came before it of the Scripture and as a criterion over it..." (Quran 5:48)</p>
+                </div>
+            </div>
+            <div class="concept-section">
+                <h2><i class="fas fa-history"></i> <span data-en="Sirah (Prophetic Biography)" data-kin="Sirah (Uburembo bw'Umukama)">Sirah (Prophetic Biography)</span></h2>
+                <div class="concept-content">
+                    <p><strong data-en="Sirah" data-kin="Sirah">Sirah</strong> <span data-en="refers to the biography of Prophet Muhammad (peace be upon him), detailing his life, character, teachings, and historical context." data-kin="bituma uburembo bw'umukama Muhammadu (umupadisi), bwatumira uburyo bwabyo, umwirondoro, ubutumwa, n'ibisubizo bya kera.">refers to the biography of Prophet Muhammad (peace be upon him), detailing his life, character, teachings, and historical context.</span></p>
+                    <p><span data-en="Key events in the Sirah include:" data-kin="“Ibikorwa by’ingenzi mu mateka y’ubuzima bwa Muhammad (Sirah) birimo:”">Key events in the Sirah include:</span></p>
+                    <p>• <span data-en="Birth in Mecca (570 CE)" data-kin="kuvuka i mecca (570 CE)">Birth in Mecca (570 CE)</span></p>
+                    <p>• <span data-en="First revelation at age 40 in Cave Hira" data-kin="“Ihabwa butumwa  rya mbere afite imyaka 40 mu Gasozi ka Hira”">First revelation at age 40 in Cave Hira</span></p>
+                    <p>• <span data-en="Migration (Hijrah) to Medina (622 CE)" data-kin="Kwegererwa (Hijrah) Medina (622 CE)">Migration (Hijrah) to Medina (622 CE)</span></p>
+                    <p>• <span data-en="Treaty of Hudaybiyyah (628 CE)" data-kin="“Amasezerano ya Hudaybiyyah” (628 CE)">Treaty of Hudaybiyyah (628 CE)</span></p>
+                    <p>• <span data-en="Conquest of Mecca (630 CE)" data-kin="Ifatwa rya makka  (630 CE)">Conquest of Mecca (630 CE)</span></p>
+                    <p>• <span data-en="Farewell Pilgrimage and sermon (632 CE)" data-kin="“Urugendo rwa nyuma rw’ hajji n’ijambo ryaryo” (632 CE)">Farewell Pilgrimage and sermon (632 CE)</span></p>
+                    <p data-en='"Indeed in the Messenger of Allah you have an excellent example to follow for whoever hopes in Allah and the Last Day..." (Quran 33:21)' data-kin='“Kuri koko, mu Butumwa bwa Allah mufite urugero rwiza ku wese ufite icyizere kuri Allah no ku Munsi w’Imperuka, kandi uhora yibuka Allah kenshi.”'>"Indeed in the Messenger of Allah you have an excellent example to follow for whoever hopes in Allah and the Last Day..." (Quran 33:21)</p>
+                </div>
+            </div>
+            <div class="source-grid" style="margin-top: 30px;">
+                <div class="source-card">
+                    <h3><i class="fas fa-book"></i> <span data-en="Al-Sirah Al-Nabawiyyah" data-kin="Al-Sirah Al-Nabawiyyah">Al-Sirah Al-Nabawiyyah</span></h3>
+                    <p data-en="Ibn Ishaq's classical biography of the Prophet Muhammad (PBUH)." data-kin="“Amateka gakondo y’umutumwa Muhammad (IIAU) yanditswe na Ibn Ishaq.">Ibn Ishaq's classical biography of the Prophet Muhammad (PBUH).</p>
+                    <a href="https://archive.org/details/TheLifeOfMohammad" target="_blank" class="source-link">Read Sirah →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-university"></i> <span data-en="Islamic Online University" data-kin="Isoko y'Uburembo bw'Islamu">Islamic Online University</span></h3>
+                    <p data-en="Free courses on Aqeedah, Fiqh, and Sirah from qualified scholars." data-kin="“Amasomo y’ubuntu ku byerekeye Aqeedah, Fiqh, na Sirah atangwa n’abashakashatsi babifitiye ubumenyi”">Free courses on Aqeedah, Fiqh, and Sirah from qualified scholars.</p>
+                    <a href="https://islamiconlineuniversity.com" target="_blank" class="source-link">Visit IOU →</a>
+                </div>
+                <div class="source-card">
+                    <h3><i class="fas fa-mosque"></i> <span data-en="Al-Quran.info" data-kin="Al-Quran.info">Al-Quran.info</span></h3>
+                    <p data-en="Comprehensive resources on Tawhid and Islamic theology." data-kin="“Ibikoresho birambuye ku byerekeye Tawhid n’iyobokamana ya Islamu”">Comprehensive resources on Tawhid and Islamic theology.</p>
+                    <a href="https://al-quran.info" target="_blank" class="source-link">Visit Al-Quran.info →</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p data-en="These sources provide authentic Islamic knowledge. Always verify information with qualified scholars." data-kin="“Ayo masoko atanga ubumenyi nyakuri bwa Islamu. Ihatire guhora wemeza amakuru n’abashakashatsi babifitiye ubumenyi.”">These sources provide authentic Islamic knowledge. Always verify information with qualified scholars.</p>
+            <p>© 2025 Islamic Knowledge Hub | Mugisha Is'haq</p>
+        </footer>
+    </div>
+    <script>
+        // Language and theme management
+        let currentLanguage = 'en'; // Default language
+        let isDarkMode = false; // Default light mode
+        // DOM elements
+        const themeToggle = document.getElementById('theme-toggle');
+        const languageToggle = document.getElementById('language-toggle');
+        const searchInput = document.getElementById('search-input');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+        const allTranslatableElements = document.querySelectorAll('[data-en]');
+        // Initialize from localStorage
+        function initSettings() {
+            // Check saved language
+            const savedLang = localStorage.getItem('islamic-hub-language');
+            if (savedLang === 'kin' || savedLang === 'en') {
+                currentLanguage = savedLang;
+            }
+            // Check saved theme
+            const savedTheme = localStorage.getItem('islamic-hub-theme');
+            if (savedTheme === 'dark') {
+                isDarkMode = true;
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
+            }
+            // Apply initial language
+            updateLanguage();
+        }
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            localStorage.setItem('islamic-hub-theme', isDarkMode ? 'dark' : 'light');
+            if (isDarkMode) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span data-en="Light Mode" data-kin="Mode ya rurimi">Light Mode</span>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> <span data-en="Dark Mode" data-kin="Mode ya mungu">Dark Mode</span>';
+            }
+            // Update language text in button
+            updateButtonText(themeToggle.querySelector('span'));
+        });
+        // Toggle language
+        languageToggle.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'en' ? 'kin' : 'en';
+            localStorage.setItem('islamic-hub-language', currentLanguage);
+            updateLanguage();
+            // Update button text
+            if (currentLanguage === 'kin') {
+                languageToggle.innerHTML = '<i class="fas fa-language"></i> <span>English</span>';
+            } else {
+                languageToggle.innerHTML = '<i class="fas fa-language"></i> <span>Kinyarwanda</span>';
+            }
+        });
+        // Update all translatable elements
+        function updateLanguage() {
+            allTranslatableElements.forEach(el => {
+                if (currentLanguage === 'kin' && el.hasAttribute('data-kin')) {
+                    el.textContent = el.getAttribute('data-kin');
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                }
+            });
+            // Update placeholder text
+            if (currentLanguage === 'kin') {
+                searchInput.placeholder = "Shakisha Qurani, Amahadithi, cyangwa amaduwa...";
+            } else {
+                searchInput.placeholder = "Search Quran, Hadith, or Duas...";
+            }
+        }
+        // Update button text specifically
+        function updateButtonText(el) {
+            if (currentLanguage === 'kin' && el.hasAttribute('data-kin')) {
+                el.textContent = el.getAttribute('data-kin');
+            } else {
+                el.textContent = el.getAttribute('data-en');
+            }
+        }
+        // Tab functionality
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                contentSections.forEach(section => section.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
+                // Update tab text
+                updateButtonText(btn);
+            });
+        });
+        // Search functionality
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    alert(`Searching for: "${query}"
+This would show relevant verses, hadiths, or duas from the sources listed.`);
+                }
+            }
+        });
+        // Add glowing effect to search bar
+        searchInput.addEventListener('focus', () => {
+            if (isDarkMode) {
+                searchInput.parentElement.style.boxShadow = '0 0 0 2px rgba(129, 140, 248, 0.5), 0 0 30px rgba(129, 140, 248, 0.4), 0 10px 25px rgba(0, 0, 0, 0.3)';
+            } else {
+                searchInput.parentElement.style.boxShadow = '0 0 0 2px rgba(74, 85, 104, 0.5), 0 0 30px rgba(74, 85, 104, 0.3), 0 10px 25px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        searchInput.addEventListener('blur', () => {
+            if (isDarkMode) {
+                searchInput.parentElement.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+            } else {
+                searchInput.parentElement.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        // Initialize the app
+        initSettings();
+    </script>
+</body>
+</html>
+
