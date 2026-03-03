@@ -35,7 +35,7 @@ Fully bilingual (English & Kinyarwanda) with dark/light mode and perfect mobile 
 
 ##  Live Demo
 
-[Click here to view the website](https://wolfrax460.github.io/islamic-knowledge-hub)  
+[Click here to view the website](https://islamknowledgehub.netlify.app)  
 *(Replace with your actual GitHub Pages / Netlify / Vercel link)*
 
 ---
