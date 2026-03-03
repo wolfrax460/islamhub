@@ -27,8 +27,8 @@
       font-size: 22px;
       text-decoration: none;
       color: #333;
-      margin-left: 8px; 
-         }  
+      margin-left: 8px;
+         }
         body.dark-mode {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             color: #e2e8f0;
@@ -40,7 +40,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 30%);
@@ -48,7 +48,7 @@
             transition: background 0.3s;
         }
         body.dark-mode::before {
-            background: 
+            background:
                 radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.15) 0%, transparent 20%),
                 radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 30%);
@@ -147,14 +147,14 @@
         }
         .search-input:focus {
             outline: none;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px rgba(74, 85, 104, 0.5),
                 0 0 30px rgba(74, 85, 104, 0.3),
                 0 10px 25px rgba(0, 0, 0, 0.1);
             border-color: rgba(74, 85, 104, 0.7);
         }
         body.dark-mode .search-input:focus {
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px rgba(129, 140, 248, 0.5),
                 0 0 30px rgba(129, 140, 248, 0.4),
                 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -243,13 +243,13 @@
         }
         .source-card:hover {
             transform: translateY(-8px);
-            box-shadow: 
+            box-shadow:
                 0 15px 30px rgba(0, 0, 0, 0.2),
                 0 0 25px rgba(74, 85, 104, 0.2);
             border-color: rgba(74, 85, 104, 0.4);
         }
         body.dark-mode .source-card:hover {
-            box-shadow: 
+            box-shadow:
                 0 15px 30px rgba(0, 0, 0, 0.3),
                 0 0 25px rgba(129, 140, 248, 0.2);
             border-color: rgba(129, 140, 248, 0.4);
@@ -472,7 +472,7 @@
                 margin-top: 15px;
             }
         }
-        
+       
         /* Custom styles for the logo */
         .logo-container {
             display: flex;
@@ -481,7 +481,7 @@
             gap: 15px;
             margin-bottom: 20px;
         }
-        
+       
         .logo-image {
             width: 120px;
             height: 120px;
@@ -490,15 +490,15 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        
+       
         .logo-image:hover {
             transform: scale(1.05);
         }
-        
+       
         body.dark-mode .logo-image {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
-        
+       
         .logo-text {
             font-size: 2.2rem;
             font-weight: 800;
@@ -508,187 +508,10 @@
             color: transparent;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+       
         body.dark-mode .logo-text {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-
-        /* Added for Advanced Studies */
-        .advanced-intro { 
-            text-align:center; 
-            max-width:800px; 
-            margin:0 auto 40px; 
-            font-size:1.1rem; 
-            color:#475569; 
-        }
-        body.dark-mode .advanced-intro { color:#cbd5e1; }
-        .topic-card { 
-            background:rgba(241,245,249,0.75); 
-            border-radius:20px; 
-            padding:24px; 
-            transition:all .3s; 
-        }
-        body.dark-mode .topic-card { background:rgba(30,41,59,0.75); }
-        .topic-card:hover { transform:translateY(-6px); }
-
-         /* Audio specific */
-        .audio-hero {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 40px 25px;
-            border-radius: 24px;
-            text-align: center;
-            margin: 30px 0;
-        }
-        .audio-hero i { font-size: 3.5rem; margin-bottom: 15px; }
-
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg,#f8fafc,#e2e8f0);
-    color: #1e293b;
-    padding: 20px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.audio-hero {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: white;
-    padding: 40px 20px;
-    border-radius: 20px;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.audio-hero i {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.audio-hero h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.source-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.source-card {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-}
-
-.source-card:hover {
-    transform: translateY(-6px);
-}
-
-.source-card h3 {
-    margin-bottom: 12px;
-}
-
-.source-card a {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #4f46e5;
-    font-weight: 600;
-}
-
-
-/* =========================
-   PILLARS OF ISLAM STYLING
-========================= */
-
-.pillars-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:20px;
-}
-
-.pillar-card{
-background:white;
-padding:30px 20px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-transition:all 0.3s ease;
-position:relative;
-overflow:hidden;
-}
-
-body.dark-mode .pillar-card{
-background:#1e293b;
-}
-
-.pillar-card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 35px rgba(0,0,0,0.15);
-}
-
-.pillar-icon{
-width:70px;
-height:70px;
-margin:0 auto 15px auto;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.8rem;
-color:white;
-background:linear-gradient(135deg,#4f46e5,#7c3aed);
-}
-
-.pillar-title{
-font-size:1.2rem;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.pillar-desc{
-font-size:0.95rem;
-line-height:1.6;
-color:#475569;
-}
-
-body.dark-mode .pillar-desc{
-color:#cbd5e1;
-}
-
-/* Quranic Foundation Box */
-.concept-section{
-margin-top:50px;
-padding:30px;
-border-radius:20px;
-background:linear-gradient(135deg,#4f46e5,#7c3aed);
-color:white;
-}
-
-.concept-section h2{
-text-align:center;
-margin-bottom:20px;
-}
-
-.concept-content p{
-margin-bottom:15px;
-line-height:1.7;
-}
-
     </style>
 </head>
 <body>
@@ -708,12 +531,12 @@ line-height:1.7;
                 <img src="img.ico" alt="Islamic Knowledge Hub Logo" class="logo-image">
                 <h1 class="logo-text">Islamic Knowledge Hub</h1>
             </div>
-            <p class="subtitle" id="main-subtitle">Authentic Quranic verses, Hadith collections, and Duas from trusted Islamic sources. Enhanced with more knowledge and powerful search.</p>
+            <p class="subtitle" id="main-subtitle">Authentic Quranic verses, Hadith collections, and Duas from trusted Islamic sources</p>
         </header>
         <div class="search-container">
             <div class="search-bar">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" id="search-input" placeholder="Search Quran, Hadith, Duas or Advanced Studies...">
+                <input type="text" class="search-input" id="search-input" placeholder="Search Quran, Hadith, or Duas...">
             </div>
         </div>
         <div class="tabs">
@@ -722,13 +545,9 @@ line-height:1.7;
             <button class="tab-btn" data-tab="duas" data-en="Duas" data-kin="amaduwa">Duas</button>
             <button class="tab-btn" data-tab="pillars" data-en="Pillars" data-kin="Inkingi">Pillars</button>
             <button class="tab-btn" data-tab="concepts" data-en="Key Concepts" data-kin="Amwe mu mategeko y'idini">Some laws of Islam</button>
-            <button class="tab-btn" data-tab="advanced" data-en="Advanced Studies" data-kin="Iby'Imbere mu Isomo">Advanced Studies</button>
-            <button class="tab-btn" data-tab="audio" data-en="Audio Lectures" data-kin="Amasomo y'Ijwi">Audio Lectures</button>
         </div>
-
-        <!-- Your original sections remain unchanged -->
         <!-- Quran Section -->
-       <div id="quran" class="content-section active">
+        <div id="quran" class="content-section active">
             <div class="quran-verse">
                 <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
                 <div class="translation" id="quran-trans-1">In the name of Allah, the Entirely Merciful, the Especially Merciful.</div>
@@ -757,9 +576,8 @@ line-height:1.7;
                 </div>
             </div>
         </div>
-
-        <!-- Hadith, Duas, Pillars, Concepts sections are exactly as you pasted (no changes) -->
-       <div id="hadith" class="content-section">
+        <!-- Hadith Section -->
+        <div id="hadith" class="content-section">
             <div class="quran-verse">
                 <div class="arabic">الْمُؤْمِنُ الَّذِي يُخَالِطُ النَّاسَ وَيَصْبِرُ عَلَى أَذَاهُمْ خَيْرٌ مِنَ الَّذِي لاَ يُخَالِطُهُمْ وَلاَ يَصْبِرُ عَلَى أَذَاهُمْ</div>
                 <div class="translation" id="hadith-trans-1">"The believer who mixes with people and endures their harm is better than the one who does not mix with them nor endure their harm."</div>
@@ -783,9 +601,7 @@ line-height:1.7;
                 </div>
             </div>
         </div>
-
-        <!--=============duas=================-->
-
+        <!-- Duas Section -->
         <div id="duas" class="content-section">
             <div class="quran-verse">
                 <div class="arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
@@ -810,7 +626,6 @@ line-height:1.7;
                 </div>
             </div>
         </div>
-
         <!-- Pillars of Islam Section -->
         <div id="pillars" class="content-section">
             <h2 style="text-align: center; margin-bottom: 30px; font-size: 2.2rem;">
@@ -917,383 +732,110 @@ line-height:1.7;
                 </div>
             </div>
         </div>
-      <div id="advanced" class="content-section">
-    <div class="advanced-intro">
-        <h2 style="font-size:2.2rem;margin-bottom:15px;">
-            <i class="fas fa-graduation-cap"></i> 
-            <span data-en="Advanced Islamic Sciences" data-kin="Ubumenyi Buhambaye bwa Isilamu">Advanced Islamic Sciences</span>
-        </h2>
-        <p>
-            <span data-en="For students of knowledge: Aqeedah, Tafsir, Usool al-Fiqh, Tazkiyah, History & more from authentic scholars (Ibn Taymiyyah, Ibn Qayyim, Albani, Bin Baz, etc.)" 
-                  data-kin="Ku banyeshuri b'ubumenyi: Aqeedah, Tafsir, Usool al-Fiqh, Tazkiyah, Amateka n'ibindi biturutse ku bahanuzi b'ukuri (Ibn Taymiyyah, Ibn Qayyim, Albani, Bin Baz, n'abandi.)">
-                For students of knowledge: Aqeedah, Tafsir, Usool al-Fiqh, Tazkiyah, History & more from authentic scholars (Ibn Taymiyyah, Ibn Qayyim, Albani, Bin Baz, etc.)
-            </span>
-        </p>
-        <p style="margin-top:12px;">
-            <span data-en="All resources are completely free PDFs & lectures." 
-                  data-kin="Ibikoresho byose ni PDFs n'amasomo y'ubuntu burundu.">
-                All resources are completely free PDFs & lectures.
-            </span>
-        </p>
-    </div>
-
-    <h3 style="text-align:center;margin:30px 0 20px;font-size:1.6rem;">
-        <span data-en="Core Advanced Topics" data-kin="Ibice By'ingenzi mu Bumenyi Buhambaye">Core Advanced Topics</span>
-    </h3>
-
-    <div class="source-grid">
-        <!-- Aqeedah -->
-        <div class="topic-card source-card">
-            <h3>
-                <i class="fas fa-shield-alt"></i> 
-                <span data-en="Aqeedah (Creed)" data-kin="Aqeedah (Imyizerere)">Aqeedah (Creed)</span>
-            </h3>
-            <p>
-                <span data-en="Books like Kitaab at-Tawheed, Aqeedah al-Waasitiyyah, Sharh al-Aqeedah at-Tahaawiyyah" 
-                      data-kin="Ibitabo nk' Kitaab at-Tawheed, Aqeedah al-Waasitiyyah, Sharh al-Aqeedah at-Tahaawiyyah">
-                    Books like <strong>Kitaab at-Tawheed</strong>, <strong>Aqeedah al-Waasitiyyah</strong>, <strong>Sharh al-Aqeedah at-Tahaawiyyah</strong>
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com/category/aqeedah-emaan/" target="_blank" class="source-link">
-                <span data-en="Browse Aqeedah on EmaanLibrary →" data-kin="Sura Aqeedah kuri EmaanLibrary →">Browse Aqeedah on EmaanLibrary →</span>
-            </a>
-        </div>
-
-        <!-- Tafsir -->
-        <div class="topic-card source-card">
-            <h3>
-                <i class="fas fa-book-open"></i> 
-                <span data-en="Tafsir (Quranic Exegesis)" data-kin="Tafsir (Ubusobanuro bw'Quran)">Tafsir (Quranic Exegesis)</span>
-            </h3>
-            <p>
-                <span data-en="Tafsir Ibn Kathir, Tafsir al-Jalalayn, Tafsir as-Sa'di, and advanced word-by-word studies" 
-                      data-kin="Tafsir Ibn Kathir, Tafsir al-Jalalayn, Tafsir as-Sa'di, n'ubushakashatsi bw'ijambo ku ijambo ry'urwego rwo hejuru">
-                    Tafsir Ibn Kathir, Tafsir al-Jalalayn, Tafsir as-Sa'di, and advanced word-by-word studies
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com/category/quran/" target="_blank" class="source-link">
-                <span data-en="Tafsir Books on EmaanLibrary →" data-kin="Ibitabo bya Tafsir kuri EmaanLibrary →">Tafsir Books on EmaanLibrary →</span>
-            </a>
-        </div>
-
-        <!-- Usool al-Fiqh -->
-        <div class="topic-card source-card">
-            <h3>
-                <i class="fas fa-balance-scale"></i> 
-                <span data-en="Usool al-Fiqh & Advanced Fiqh" data-kin="Usool al-Fiqh & Fiqh ry'Urwego Rwo Hejuru">Usool al-Fiqh & Advanced Fiqh</span>
-            </h3>
-            <p>
-                <span data-en="Al-Waraqat, Rawdat al-Nazir, Buloogh al-Maram, Zaad al-Mustaqni'" 
-                      data-kin="Al-Waraqat, Rawdat al-Nazir, Buloogh al-Maram, Zaad al-Mustaqni'">
-                    Al-Waraqat, Rawdat al-Nazir, Buloogh al-Maram, Zaad al-Mustaqni'
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com/category/fiqh/" target="_blank" class="source-link">
-                <span data-en="Fiqh & Usool on EmaanLibrary →" data-kin="Fiqh & Usool kuri EmaanLibrary →">Fiqh & Usool on EmaanLibrary →</span>
-            </a>
-        </div>
-
-        <!-- Tazkiyah -->
-        <div class="topic-card source-card">
-            <h3>
-                <i class="fas fa-heart"></i> 
-                <span data-en="Tazkiyah & Purification of the Soul" data-kin="Tazkiyah & Kweza Umutima">Tazkiyah & Purification of the Soul</span>
-            </h3>
-            <p>
-                <span data-en="Ihya Ulum ad-Din (Ghazali), Madarij as-Salikin (Ibn Qayyim), Riyad as-Salihin" 
-                      data-kin="Ihya Ulum ad-Din (Ghazali), Madarij as-Salikin (Ibn Qayyim), Riyad as-Salihin">
-                    Ihya Ulum ad-Din (Ghazali), Madarij as-Salikin (Ibn Qayyim), Riyad as-Salihin
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com/category/tazkiyah/" target="_blank" class="source-link">
-                <span data-en="Tazkiyah Books →" data-kin="Ibitabo bya Tazkiyah →">Tazkiyah Books →</span>
-            </a>
-        </div>
-
-        <!-- Sirah & History -->
-        <div class="topic-card source-card">
-            <h3>
-                <i class="fas fa-history"></i> 
-                <span data-en="Sirah & Islamic History" data-kin="Sirah & Amateka ya Isilamu">Sirah & Islamic History</span>
-            </h3>
-            <p>
-                <span data-en="Ar-Raheeq al-Makhtum, Al-Bidayah wa an-Nihayah (Ibn Kathir), Biographies of Salaf" 
-                      data-kin="Ar-Raheeq al-Makhtum, Al-Bidayah wa an-Nihayah (Ibn Kathir), Ubuzima bw'Abasalaf">
-                    Ar-Raheeq al-Makhtum, Al-Bidayah wa an-Nihayah (Ibn Kathir), Biographies of Salaf
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com/category/biographies/" target="_blank" class="source-link">
-                <span data-en="Sirah & History →" data-kin="Sirah & Amateka →">Sirah & History →</span>
-            </a>
-        </div>
-
-        <!-- Hadith Sciences -->
-        <div class="topic-card source-card">
-            <h3>
-                <i class="fas fa-microphone"></i> 
-                <span data-en="Hadith Sciences (Mustalah)" data-kin="Ubumenyi bwa Hadith (Mustalah al-Hadith)">Hadith Sciences (Mustalah)</span>
-            </h3>
-            <p>
-                <span data-en="Nukhbat al-Fikr, Al-Bayquniyyah, advanced Sharh of Sahih Bukhari/Muslim" 
-                      data-kin="Nukhbat al-Fikr, Al-Bayquniyyah, ubusobanuro bw'urwego rwo hejuru bwa Sahih Bukhari/Muslim">
-                    Nukhbat al-Fikr, Al-Bayquniyyah, advanced Sharh of Sahih Bukhari/Muslim
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com/category/hadith/" target="_blank" class="source-link">
-                <span data-en="Hadith Sciences →" data-kin="Ubumenyi bwa Hadith →">Hadith Sciences →</span>
-            </a>
-        </div>
-    </div>
-
-    <h3 style="text-align:center;margin:40px 0 25px;font-size:1.6rem;">
-        <span data-en="Free Digital Libraries (Thousands of PDFs)" data-kin="Amasomero ya Dijitali y'Ubuntu (Ibibarwa mu Bihumbi bya PDFs)">Free Digital Libraries (Thousands of PDFs)</span>
-    </h3>
-
-    <div class="source-grid">
-        <!-- EmaanLibrary -->
-        <div class="source-card">
-            <h3>
-                <i class="fas fa-book"></i> 
-                <span data-en="EmaanLibrary.com" data-kin="EmaanLibrary.com">EmaanLibrary.com</span>
-            </h3>
-            <p>
-                <span data-en="Best for advanced students — 1000s of free books & lectures by Ibn Qayyim, Albani, Bin Baz, Rabee al-Madkhali, and classical scholars." 
-                      data-kin="Ibyiza cyane ku banyeshuri b'urwego rwo hejuru — ibitabo n'amasomo y'ubuntu bihumbi bihumbi bya Ibn Qayyim, Albani, Bin Baz, Rabee al-Madkhali, n'abahanuzi ba kera.">
-                    <strong data-en="Best for advanced students" data-kin="Ibyiza cyane ku banyeshuri b'urwego rwo hejuru">Best for advanced students</strong> — 1000s of free books & lectures by Ibn Qayyim, Albani, Bin Baz, Rabee al-Madkhali, and classical scholars.
-                </span>
-            </p>
-            <a href="https://emaanlibrary.com" target="_blank" class="source-link">
-                <span data-en="Visit EmaanLibrary →" data-kin="Sura EmaanLibrary →">Visit EmaanLibrary →</span>
-            </a>
-        </div>
-
-        <!-- Muslim-Library -->
-        <div class="source-card">
-            <h3>
-                <i class="fas fa-book"></i> 
-                <span data-en="Muslim-Library.com" data-kin="Muslim-Library.com">Muslim-Library.com</span>
-            </h3>
-            <p>
-                <span data-en="Comprehensive e-Library in 100+ languages." 
-                      data-kin="Amasomero yuzuye mu ndimi zirenga 100.">
-                    Comprehensive e-Library in 100+ languages.
-                </span>
-            </p>
-            <a href="https://www.muslim-library.com" target="_blank" class="source-link">
-                <span data-en="Visit Muslim Library →" data-kin="Sura Muslim Library →">Visit Muslim Library →</span>
-            </a>
-        </div>
-
-        <!-- Kalamullah -->
-        <div class="source-card">
-            <h3>
-                <i class="fas fa-book"></i> 
-                <span data-en="Kalamullah.com" data-kin="Kalamullah.com">Kalamullah.com</span>
-            </h3>
-            <p>
-                <span data-en="Classic free Islamic library — famous for high-quality PDFs of Ibn Taymiyyah & Ibn al-Qayyim." 
-                      data-kin="Amasomero y'iyisilamu y'ubuntu y'ikirenga — izwi cyane ku PDFs z'umwimerere za Ibn Taymiyyah & Ibn al-Qayyim.">
-                    Classic free Islamic library — famous for high-quality PDFs of Ibn Taymiyyah & Ibn al-Qayyim.
-                </span>
-            </p>
-            <a href="https://kalamullah.com" target="_blank" class="source-link">
-                <span data-en="Visit Kalamullah →" data-kin="Sura Kalamullah →">Visit Kalamullah →</span>
-            </a>
-        </div>
-
-        <!-- MyIslamicLibrary -->
-        <div class="source-card">
-            <h3>
-                <i class="fas fa-book"></i> 
-                <span data-en="MyIslamicLibrary.com" data-kin="MyIslamicLibrary.com">MyIslamicLibrary.com</span>
-            </h3>
-            <p>
-                <span data-en="Clean, easy-to-browse collection of authentic books." 
-                      data-kin="Ibyegeranyo by'ibitabo by'ukuri byoroshye kugenda.">
-                    Clean, easy-to-browse collection of authentic books.
-                </span>
-            </p>
-            <a href="https://myislamiclibrary.com" target="_blank" class="source-link">
-                <span data-en="Visit MyIslamicLibrary →" data-kin="Sura MyIslamicLibrary →">Visit MyIslamicLibrary →</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="concept-section">
-        <h2>
-            <i class="fas fa-lightbulb"></i> 
-            <span data-en="Advice for Students of Knowledge" data-kin="Inama ku Banyeshuri b'Ubumenyi">Advice for Students of Knowledge</span>
-        </h2>
-        <div class="concept-content">
-            <p>
-                <strong data-en="Recommended study path:" data-kin="Inzira y'ubushakashatsi isabwa:">Recommended study path:</strong> 
-                <span data-en="Kitaab at-Tawheed → Thalaathat al-Usool → Al-Aqeedah al-Waasitiyyah → Buloogh al-Maram → Ar-Raheeq al-Makhtum" 
-                      data-kin="Kitaab at-Tawheed → Thalaathat al-Usool → Al-Aqeedah al-Waasitiyyah → Buloogh al-Maram → Ar-Raheeq al-Makhtum">
-                    Kitaab at-Tawheed → Thalaathat al-Usool → Al-Aqeedah al-Waasitiyyah → Buloogh al-Maram → Ar-Raheeq al-Makhtum
-                </span>
-            </p>
-            <p>
-                <span data-en="All these are freely available on the libraries above. Always study with a qualified teacher when possible." 
-                      data-kin="Ibi byose biboneka ku buntu kuri ayo masomero yavuzwe hejuru. Buri gihe, iga hamwe n'umwarimu ukwiye iyo bishoboka.">
-                    All these are freely available on the libraries above. Always study with a qualified teacher when possible.
-                </span>
-            </p>
-            <p style="margin-top:15px;color:#64748b;" 
-               data-en='"Whoever Allah wants good for, He gives him understanding of the religion." — Sahih al-Bukhari' 
-               data-kin='"Uwo Allah ashaka ikintu cyiza, amuha gusobanukirwa idini." — Sahih al-Bukhari'>
-                "Whoever Allah wants good for, He gives him understanding of the religion." — Sahih al-Bukhari
-            </p>
-        </div>
-    </div>
-</div>
-
-        <!-- NEW AUDIO LECTURES SECTION -->
-        <div id="audio" class="content-section">
-            <div class="audio-hero">
-                <i class="fas fa-headphones-alt"></i>
-                <h2 style="font-size:2.4rem;margin-bottom:10px;">Islamic Audio Lectures</h2>
-                <p style="max-width:700px;margin:0 auto;font-size:1.15rem;">High-quality, authentic lectures from world-renowned scholars. Listen anytime, anywhere — completely free.</p>
-            </div>
-
-            <div class="source-grid">
-                <!-- Featured Audio Platforms -->
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> Muslim Central</h3>
-                    <p><strong>Thousands of lectures</strong> from Nouman Ali Khan, Omar Suleiman, Mufti Menk, Yasir Qadhi, and 140+ speakers. Best organized audio library on the internet.</p>
-                    <a href="https://muslimcentral.com" target="_blank" class="source-link">Listen on Muslim Central →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> Bayyinah.org (Nouman Ali Khan)</h3>
-                    <p>Deep Quranic reflections, Seerah, and life-changing series like "The Divine Reality", "The Art of Quran Recitation" and Ramadan specials.</p>
-                    <a href="https://bayyinah.org" target="_blank" class="source-link">Bayyinah Audio Library →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> Yaqeen Institute</h3>
-                    <p>Dr. Omar Suleiman’s powerful series on faith, mental health, history, and contemporary issues. Extremely clear and heart-touching.</p>
-                    <a href="https://yaqeeninstitute.org/audio" target="_blank" class="source-link">Yaqeen Audio →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> EmaanLibrary Audio</h3>
-                    <p>Over 10,000 authentic audio lectures &amp; videos — classical scholars (Ibn Qayyim, Albani, Bin Baz, Fawzan, etc.). Perfect for advanced students.</p>
-                    <a href="https://www.emaanlibrary.com" target="_blank" class="source-link">EmaanLibrary Audio Section →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> Kalamullah Audio</h3>
-                    <p>Classic high-quality lectures including full series by Anwar Al-Awlaki (rahimahullah), Ibn Taymiyyah explanations, and more.</p>
-                    <a href="https://kalamullah.com/audio.html" target="_blank" class="source-link">Kalamullah Audio →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> AbdurRahman.org Audio</h3>
-                    <p>Pure Salafi audio: Shaykh Saleh al-Fawzan, Shaykh Ubayd al-Jabiri, Dr. Saleh As-Saleh, and many more authentic scholars.</p>
-                    <a href="https://abdurrahman.org/audio/" target="_blank" class="source-link">AbdurRahman Audio Lectures →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> AlMaghrib Institute</h3>
-                    <p>University-style intensive seminars with top instructors (Yasir Qadhi, Waleed Basyouni, etc.). On-demand audio available.</p>
-                    <a href="https://www.almaghrib.org" target="_blank" class="source-link">AlMaghrib Audio →</a>
-                </div>
-
-                <div class="source-card" data-searchable="true">
-                    <h3><i class="fas fa-headphones"></i> Bakkah.net Courses</h3>
-                    <p>Free full courses with audio recordings by Ustaadh Moosaa Richardson on Aqeedah, Fiqh, Hadith, and more.</p>
-                    <a href="https://www.bakkah.net/en/free-islamic-courses-online-recordings-workbooks-resources.htm" target="_blank" class="source-link">Bakkah Free Courses →</a>
-                </div>
-            </div>
-
-            <div class="concept-section">
-                <h2><i class="fas fa-lightbulb"></i> How to Benefit Most from Audio Lectures</h2>
-                <div class="concept-content">
-                    <p><strong>Recommended daily routine:</strong></p>
-                    <p>• Morning: 15–20 min Quran Tafsir (Bayyinah or Yaqeen)</p>
-                    <p>• Evening: Aqeedah or Seerah (EmaanLibrary or Muslim Central)</p>
-                    <p>• Weekend: Full seminar (AlMaghrib or Bakkah)</p>
-                    <p style="margin-top:15px;color:#64748b;">"The best of you are those who learn the Quran and teach it." — Prophet Muhammad ﷺ (Bukhari)</p>
-                </div>
-            </div>
-        </div>
         <footer>
             <p data-en="These sources provide authentic Islamic knowledge. Always verify information with qualified scholars." data-kin="“Ayo masoko atanga ubumenyi nyakuri bwa Islamu. Ihatire guhora wemeza amakuru n’abashakashatsi babifitiye ubumenyi.”">These sources provide authentic Islamic knowledge. Always verify information with qualified scholars.</p>
-            <p>© 2026 Islamic Knowledge Hub | Mugisha Is'haq</p>
+            <p>© 2025 Islamic Knowledge Hub | Mugisha Is'haq</p>
         </footer>
     </div>
-
     <script>
-        // Your original script + updated search and placeholder
-        let currentLanguage = 'en';
-        let isDarkMode = false;
-
+        // Language and theme management
+        let currentLanguage = 'en'; // Default language
+        let isDarkMode = false; // Default light mode
+        // DOM elements
         const themeToggle = document.getElementById('theme-toggle');
         const languageToggle = document.getElementById('language-toggle');
         const searchInput = document.getElementById('search-input');
         const tabBtns = document.querySelectorAll('.tab-btn');
         const contentSections = document.querySelectorAll('.content-section');
         const allTranslatableElements = document.querySelectorAll('[data-en]');
-        const allSearchable = document.querySelectorAll('[data-searchable="true"], .topic-card, .source-card');
-
+        // Initialize from localStorage
         function initSettings() {
+            // Check saved language
             const savedLang = localStorage.getItem('islamic-hub-language');
-            if (savedLang === 'kin' || savedLang === 'en') currentLanguage = savedLang;
+            if (savedLang === 'kin' || savedLang === 'en') {
+                currentLanguage = savedLang;
+            }
+            // Check saved theme
             const savedTheme = localStorage.getItem('islamic-hub-theme');
             if (savedTheme === 'dark') {
                 isDarkMode = true;
                 document.body.classList.add('dark-mode');
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
             }
+            // Apply initial language
             updateLanguage();
         }
-
+        // Toggle theme
         themeToggle.addEventListener('click', () => {
             isDarkMode = !isDarkMode;
             document.body.classList.toggle('dark-mode', isDarkMode);
             localStorage.setItem('islamic-hub-theme', isDarkMode ? 'dark' : 'light');
-            themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i> <span data-en="Light Mode" data-kin="Mode ya rurimi">Light Mode</span>' : '<i class="fas fa-moon"></i> <span data-en="Dark Mode" data-kin="Mode ya mungu">Dark Mode</span>';
+            if (isDarkMode) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span data-en="Light Mode" data-kin="Mode ya rurimi">Light Mode</span>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> <span data-en="Dark Mode" data-kin="Mode ya mungu">Dark Mode</span>';
+            }
+            // Update language text in button
             updateButtonText(themeToggle.querySelector('span'));
         });
-
+        // Toggle language
         languageToggle.addEventListener('click', () => {
             currentLanguage = currentLanguage === 'en' ? 'kin' : 'en';
             localStorage.setItem('islamic-hub-language', currentLanguage);
             updateLanguage();
-            languageToggle.innerHTML = currentLanguage === 'kin' ? '<i class="fas fa-language"></i> <span>English</span>' : '<i class="fas fa-language"></i> <span>Kinyarwanda</span>';
+            // Update button text
+            if (currentLanguage === 'kin') {
+                languageToggle.innerHTML = '<i class="fas fa-language"></i> <span>English</span>';
+            } else {
+                languageToggle.innerHTML = '<i class="fas fa-language"></i> <span>Kinyarwanda</span>';
+            }
         });
-
+        // Update all translatable elements
         function updateLanguage() {
             allTranslatableElements.forEach(el => {
-                el.textContent = (currentLanguage === 'kin' && el.hasAttribute('data-kin')) ? el.getAttribute('data-kin') : el.getAttribute('data-en');
+                if (currentLanguage === 'kin' && el.hasAttribute('data-kin')) {
+                    el.textContent = el.getAttribute('data-kin');
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                }
             });
-            searchInput.placeholder = currentLanguage === 'kin' ? "Shakisha Qurani, Amahadithi, cyangwa amaduwa cyangwa iby'imbere..." : "Search Quran, Hadith, Duas or Advanced Studies...";
+            // Update placeholder text
+            if (currentLanguage === 'kin') {
+                searchInput.placeholder = "Shakisha Qurani, Amahadithi, cyangwa amaduwa...";
+            } else {
+                searchInput.placeholder = "Search Quran, Hadith, or Duas...";
+            }
         }
-
+        // Update button text specifically
         function updateButtonText(el) {
-            if (currentLanguage === 'kin' && el.hasAttribute('data-kin')) el.textContent = el.getAttribute('data-kin');
+            if (currentLanguage === 'kin' && el.hasAttribute('data-kin')) {
+                el.textContent = el.getAttribute('data-kin');
+            } else {
+                el.textContent = el.getAttribute('data-en');
+            }
         }
-
+        // Tab functionality
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 tabBtns.forEach(b => b.classList.remove('active'));
                 contentSections.forEach(section => section.classList.remove('active'));
                 btn.classList.add('active');
                 document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
+                // Update tab text
                 updateButtonText(btn);
             });
         });
-
-        // Enhanced Search (now includes Advanced cards)
+        // Search functionality
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 const query = searchInput.value.trim();
                 if (query) {
-                    alert(`Searching for: "${query}"\nThis would show relevant verses, hadiths, duas or advanced resources.`);
+                    alert(`Searching for: "${query}"
+This would show relevant verses, hadiths, or duas from the sources listed.`);
                 }
             }
         });
-
+        // Add glowing effect to search bar
         searchInput.addEventListener('focus', () => {
             if (isDarkMode) {
                 searchInput.parentElement.style.boxShadow = '0 0 0 2px rgba(129, 140, 248, 0.5), 0 0 30px rgba(129, 140, 248, 0.4), 0 10px 25px rgba(0, 0, 0, 0.3)';
@@ -1308,31 +850,8 @@ line-height:1.7;
                 searchInput.parentElement.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
             }
         });
-
-
-        // Simple animation effect on scroll
-const cards = document.querySelectorAll(".source-card");
-
-window.addEventListener("scroll", () => {
-    cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        const triggerPoint = window.innerHeight - 100;
-
-        if (cardTop < triggerPoint) {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-        }
-    });
-});
-
-// Initial state
-cards.forEach(card => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px)";
-    card.style.transition = "all 0.6s ease";
-});
-
+        // Initialize the app
         initSettings();
     </script>
 </body>
-</html>
+</html> 

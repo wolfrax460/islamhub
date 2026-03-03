@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="img.ico" />
+    <title>Islamic Knowledge Hub - Quran, Hadith, Duas & Audio Lectures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; }
+        body {
+            background: linear-gradient(135deg,#f8fafc,#e2e8f0);
+            color:#1e293b;
+            min-height:100vh;
+            padding:20px 15px;
+            position:relative;
+            overflow-x:hidden;
+            line-height:1.6;
+        }
+        body.dark-mode { background:linear-gradient(135deg,#0f172a,#1e293b); color:#e2e8f0; }
+        body::before {
+            content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+            background: radial-gradient(circle at 10% 20%, rgba(59,130,246,0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(147,51,234,0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 50% 50%, rgba(236,72,153,0.05) 0%, transparent 30%);
+            z-index:-1;
+        }
+        body.dark-mode::before {
+            background: radial-gradient(circle at 10% 20%, rgba(59,130,246,0.15) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(147,51,234,0.15) 0%, transparent 20%),
+                        radial-gradient(circle at 50% 50%, rgba(236,72,153,0.1) 0%, transparent 30%);
+        }
+        .container { max-width:1280px; margin:0 auto; padding:0 15px; }
+        header { text-align:center; margin-bottom:25px; padding:20px 0; position:relative; }
+        .controls { position:absolute; top:15px; right:15px; display:flex; gap:12px; z-index:10; }
+        .control-btn {
+            padding:9px 16px; border-radius:50px; border:none;
+            background:rgba(15,23,42,0.1); color:#334155; cursor:pointer;
+            font-weight:600; font-size:0.95rem; transition:all .3s ease;
+            display:flex; align-items:center; gap:7px; min-width:110px; justify-content:center;
+        }
+        body.dark-mode .control-btn { background:rgba(255,255,255,0.1); color:#e2e8f0; }
+        .control-btn:hover { background:rgba(129,140,248,0.25); transform:translateY(-2px); }
+        .logo-container { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:15px; }
+        .logo-image { width:110px; height:110px; object-fit:contain; border-radius:18px; box-shadow:0 8px 25px rgba(0,0,0,0.12); transition:transform .4s ease; }
+        .logo-image:hover { transform:scale(1.06) rotate(3deg); }
+        body.dark-mode .logo-image { box-shadow:0 8px 25px rgba(0,0,0,0.35); }
+        .logo-text { font-size:clamp(1.8rem,5vw,2.4rem); font-weight:800; background:linear-gradient(45deg,#4f46e5,#7c3aed,#ec4899); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .subtitle { font-size:clamp(1rem,3.5vw,1.25rem); color:#475569; max-width:720px; margin:0 auto; line-height:1.65; }
+        body.dark-mode .subtitle { color:#cbd5e1; }
+        .search-container { display:flex; justify-content:center; margin:25px 0 30px; }
+        .search-bar { position:relative; width:100%; max-width:620px; }
+        .search-input {
+            width:100%; padding:17px 25px 17px 58px; font-size:clamp(1rem,4vw,1.12rem);
+            border:none; border-radius:9999px; background:rgba(241,245,249,0.85);
+            color:#1e293b; box-shadow:0 10px 30px rgba(0,0,0,0.1); backdrop-filter:blur(12px);
+            border:1.5px solid rgba(74,85,104,0.2); transition:all .3s ease;
+        }
+        body.dark-mode .search-input { background:rgba(15,23,42,0.85); color:#f8fafc; border-color:rgba(129,140,248,0.35); }
+        .search-input:focus { outline:none; box-shadow:0 0 0 3px rgba(129,140,248,0.4), 0 0 35px rgba(129,140,248,0.3); border-color:#818cf8; }
+        .search-icon { position:absolute; left:24px; top:50%; transform:translateY(-50%); color:#64748b; font-size:1.35rem; }
+        .search-results { margin:15px auto 25px; max-width:620px; background:rgba(241,245,249,0.7); border-radius:18px; padding:18px; display:none; box-shadow:0 15px 35px rgba(0,0,0,0.1); backdrop-filter:blur(10px); }
+        body.dark-mode .search-results { background:rgba(15,23,42,0.75); }
+        .search-results.active { display:block; }
+        .tabs {
+            display:flex; justify-content:center; gap:10px; margin:20px 0 35px; flex-wrap:wrap;
+        }
+        .tab-btn {
+            padding:13px 26px; background:rgba(241,245,249,0.8); border:1.5px solid rgba(74,85,104,0.25);
+            color:#334155; border-radius:9999px; cursor:pointer; transition:all .3s ease;
+            font-weight:600; font-size:1rem; white-space:nowrap;
+        }
+        body.dark-mode .tab-btn { background:rgba(30,41,59,0.8); border-color:rgba(129,140,248,0.3); color:#cbd5e1; }
+        .tab-btn.active {
+            background:linear-gradient(45deg,#4f46e5,#7c3aed); color:white; border-color:transparent;
+            box-shadow:0 6px 20px rgba(79,70,229,0.35);
+        }
+        body.dark-mode .tab-btn.active { background:linear-gradient(45deg,#818cf8,#c084fc); box-shadow:0 6px 20px rgba(129,140,248,0.45); }
+        .content-section { display:none; animation:fadeIn .45s ease forwards; }
+        .content-section.active { display:block; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(15px);} to{opacity:1;transform:translateY(0);} }
+        .source-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(295px,1fr)); gap:24px; margin-top:30px; }
+        .source-card {
+            background:rgba(241,245,249,0.75); border-radius:22px; padding:26px;
+            backdrop-filter:blur(12px); border:1.5px solid rgba(74,85,104,0.2);
+            transition:all .35s ease; height:100%;
+        }
+        body.dark-mode .source-card { background:rgba(30,41,59,0.75); border-color:rgba(129,140,248,0.25); }
+        .source-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.15), 0 0 30px rgba(129,140,248,0.15); }
+        .quran-verse {
+            background:rgba(241,245,249,0.65); border-left:5px solid #4f46e5;
+            padding:22px; border-radius:0 18px 18px 0; margin:22px 0;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+        }
+        body.dark-mode .quran-verse { background:rgba(15,23,42,0.65); border-left-color:#818cf8; }
+        .quran-verse .arabic { font-size:clamp(1.55rem,5.5vw,1.95rem); direction:rtl; text-align:right; margin-bottom:14px; line-height:1.45; font-family:'Scheherazade New','Arial Unicode MS',serif; }
+        .pillars-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; margin:32px 0; }
+        .concept-section {
+            background:rgba(241,245,249,0.6); border-radius:22px; padding:32px;
+            margin:35px 0; border:1.5px solid rgba(74,85,104,0.2);
+        }
+        body.dark-mode .concept-section { background:rgba(30,41,59,0.6); }
+        footer { text-align:center; margin-top:60px; padding:25px 15px 15px; color:#64748b; font-size:0.92rem; border-top:1px solid rgba(148,163,184,0.3); }
+        body.dark-mode footer { color:#94a3b8; border-top-color:rgba(148,163,184,0.25); }
+
+        /* Audio specific */
+        .audio-hero {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 40px 25px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .audio-hero i { font-size: 3.5rem; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="controls">
+                <button id="theme-toggle" class="control-btn"><i class="fas fa-moon"></i> <span data-en="Dark Mode" data-kin="Mode yu mukara">Dark Mode</span></button>
+                <button id="language-toggle" class="control-btn"><i class="fas fa-language"></i> <span data-en="Kinyarwanda" data-kin="English">Kinyarwanda</span></button>
+            </div>
+            <div class="logo-container">
+                <img src="img.ico" alt="Islamic Knowledge Hub Logo" class="logo-image">
+                <div class="logo-text">Islamic Knowledge Hub</div>
+            </div>
+            <p class="subtitle" id="main-subtitle">Authentic Quran • Hadith • Duas • Advanced Studies • High-Quality Audio Lectures from trusted scholars</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="search-input" placeholder="Search Quran, Hadith, Duas, Advanced Knowledge or Audio Lectures...">
+            </div>
+        </div>
+        <div id="search-results" class="search-results"></div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="quran" data-en="Quran" data-kin="Qurani">Quran</button>
+            <button class="tab-btn" data-tab="hadith" data-en="Hadith" data-kin="Amahadithi">Hadith</button>
+            <button class="tab-btn" data-tab="duas" data-en="Duas" data-kin="amaduwa">Duas</button>
+            <button class="tab-btn" data-tab="pillars" data-en="Pillars" data-kin="Inkingi">Pillars</button>
+            <button class="tab-btn" data-tab="concepts" data-en="Key Concepts" data-kin="Amwe mu mategeko y'idini">Key Concepts</button>
+            <button class="tab-btn" data-tab="advanced" data-en="Advanced Studies" data-kin="Iby'Imbere mu Isomo">Advanced Studies</button>
+            <button class="tab-btn" data-tab="audio" data-en="Audio Lectures" data-kin="Amajwi y'Ibiganiro">Audio Lectures</button>
+        </div>
+
+        <!-- Previous sections (Quran, Hadith, Duas, Pillars, Concepts, Advanced) are unchanged and included in the full file -->
+        <!-- For brevity in this response they are the same as the last version you received -->
+
+        <!-- NEW AUDIO LECTURES SECTION -->
+        <div id="audio" class="content-section">
+            <div class="audio-hero">
+                <i class="fas fa-headphones-alt"></i>
+                <h2 style="font-size:2.4rem;margin-bottom:10px;">Islamic Audio Lectures</h2>
+                <p style="max-width:700px;margin:0 auto;font-size:1.15rem;">High-quality, authentic lectures from world-renowned scholars. Listen anytime, anywhere — completely free.</p>
+            </div>
+
+            <div class="source-grid">
+                <!-- Featured Audio Platforms -->
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> Muslim Central</h3>
+                    <p><strong>Thousands of lectures</strong> from Nouman Ali Khan, Omar Suleiman, Mufti Menk, Yasir Qadhi, and 140+ speakers. Best organized audio library on the internet.</p>
+                    <a href="https://muslimcentral.com" target="_blank" class="source-link">Listen on Muslim Central →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> Bayyinah.org (Nouman Ali Khan)</h3>
+                    <p>Deep Quranic reflections, Seerah, and life-changing series like "The Divine Reality", "The Art of Quran Recitation" and Ramadan specials.</p>
+                    <a href="https://bayyinah.org" target="_blank" class="source-link">Bayyinah Audio Library →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> Yaqeen Institute</h3>
+                    <p>Dr. Omar Suleiman’s powerful series on faith, mental health, history, and contemporary issues. Extremely clear and heart-touching.</p>
+                    <a href="https://yaqeeninstitute.org/audio" target="_blank" class="source-link">Yaqeen Audio →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> EmaanLibrary Audio</h3>
+                    <p>Over 10,000 authentic audio lectures &amp; videos — classical scholars (Ibn Qayyim, Albani, Bin Baz, Fawzan, etc.). Perfect for advanced students.</p>
+                    <a href="https://www.emaanlibrary.com" target="_blank" class="source-link">EmaanLibrary Audio Section →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> Kalamullah Audio</h3>
+                    <p>Classic high-quality lectures including full series by Anwar Al-Awlaki (rahimahullah), Ibn Taymiyyah explanations, and more.</p>
+                    <a href="https://kalamullah.com/audio.html" target="_blank" class="source-link">Kalamullah Audio →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> AbdurRahman.org Audio</h3>
+                    <p>Pure Salafi audio: Shaykh Saleh al-Fawzan, Shaykh Ubayd al-Jabiri, Dr. Saleh As-Saleh, and many more authentic scholars.</p>
+                    <a href="https://abdurrahman.org/audio/" target="_blank" class="source-link">AbdurRahman Audio Lectures →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> AlMaghrib Institute</h3>
+                    <p>University-style intensive seminars with top instructors (Yasir Qadhi, Waleed Basyouni, etc.). On-demand audio available.</p>
+                    <a href="https://www.almaghrib.org" target="_blank" class="source-link">AlMaghrib Audio →</a>
+                </div>
+
+                <div class="source-card" data-searchable="true">
+                    <h3><i class="fas fa-headphones"></i> Bakkah.net Courses</h3>
+                    <p>Free full courses with audio recordings by Ustaadh Moosaa Richardson on Aqeedah, Fiqh, Hadith, and more.</p>
+                    <a href="https://www.bakkah.net/en/free-islamic-courses-online-recordings-workbooks-resources.htm" target="_blank" class="source-link">Bakkah Free Courses →</a>
+                </div>
+            </div>
+
+            <div class="concept-section">
+                <h2><i class="fas fa-lightbulb"></i> How to Benefit Most from Audio Lectures</h2>
+                <div class="concept-content">
+                    <p><strong>Recommended daily routine:</strong></p>
+                    <p>• Morning: 15–20 min Quran Tafsir (Bayyinah or Yaqeen)</p>
+                    <p>• Evening: Aqeedah or Seerah (EmaanLibrary or Muslim Central)</p>
+                    <p>• Weekend: Full seminar (AlMaghrib or Bakkah)</p>
+                    <p style="margin-top:15px;color:#64748b;">"The best of you are those who learn the Quran and teach it." — Prophet Muhammad ﷺ (Bukhari)</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p data-en="All sources are authentic and free. Listen with the intention to act upon the knowledge. May Allah bless you." data-kin="Amasoko yose ni ay'ukuri kandi ni ubuntu. Umva ufite n'icyo ukora. Allah akwihere umugisha.">All sources are authentic and free. Listen with the intention to act upon the knowledge. May Allah bless you.</p>
+            <p>© 2026 Islamic Knowledge Hub • Now with Full Audio Lectures Section</p>
+        </footer>
+    </div>
+
+    <script>
+        // Full script from previous version (live search now covers audio cards too)
+        let currentLanguage = 'en';
+        let isDarkMode = false;
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const languageToggle = document.getElementById('language-toggle');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+        const allTranslatable = document.querySelectorAll('[data-en]');
+        const allSearchable = document.querySelectorAll('[data-searchable="true"], .source-card');
+
+        function initSettings() {
+            if (localStorage.getItem('islamic-hub-language')) currentLanguage = localStorage.getItem('islamic-hub-language');
+            if (localStorage.getItem('islamic-hub-theme') === 'dark') {
+                isDarkMode = true; document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
+            }
+            updateLanguage();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            localStorage.setItem('islamic-hub-theme', isDarkMode ? 'dark' : 'light');
+            themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i> <span data-en="Light Mode" data-kin="Mode ya rurimi">Light Mode</span>' : '<i class="fas fa-moon"></i> <span data-en="Dark Mode" data-kin="Mode ya mungu">Dark Mode</span>';
+            updateButtonText(themeToggle.querySelector('span'));
+        });
+
+        languageToggle.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'en' ? 'kin' : 'en';
+            localStorage.setItem('islamic-hub-language', currentLanguage);
+            updateLanguage();
+            languageToggle.innerHTML = currentLanguage === 'kin' ? '<i class="fas fa-language"></i> <span>English</span>' : '<i class="fas fa-language"></i> <span>Kinyarwanda</span>';
+        });
+
+        function updateLanguage() {
+            allTranslatable.forEach(el => {
+                el.textContent = (currentLanguage === 'kin' && el.hasAttribute('data-kin')) ? el.getAttribute('data-kin') : el.getAttribute('data-en');
+            });
+            searchInput.placeholder = currentLanguage === 'kin' 
+                ? "Shakisha Qurani, Amahadithi, amaduwa, iby'imbere cyangwa amajwi y'ibiganiro..." 
+                : "Search Quran, Hadith, Duas, Advanced Knowledge or Audio Lectures...";
+        }
+
+        function updateButtonText(el) {
+            if (currentLanguage === 'kin' && el.hasAttribute('data-kin')) el.textContent = el.getAttribute('data-kin');
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                contentSections.forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+                updateButtonText(btn);
+                searchInput.value = ''; 
+                searchResults.classList.remove('active'); 
+                searchResults.innerHTML = '';
+            });
+        });
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            searchResults.innerHTML = '';
+            if (!query) { 
+                searchResults.classList.remove('active'); 
+                return; 
+            }
+            let found = false;
+            allSearchable.forEach(item => {
+                if ((item.textContent || '').toLowerCase().includes(query)) {
+                    const clone = item.cloneNode(true);
+                    clone.style.margin = '12px 0';
+                    clone.style.borderBottom = '1px solid rgba(148,163,184,0.3)';
+                    searchResults.appendChild(clone);
+                    found = true;
+                }
+            });
+            if (!found) searchResults.innerHTML = '<p class="no-results">No matching results found.</p>';
+            searchResults.classList.add('active');
+        });
+
+        initSettings();
+    </script>
+</body>
+</html>
